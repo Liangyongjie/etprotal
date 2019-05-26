@@ -1,0 +1,64 @@
+server:
+  port: 9999
+  servlet:
+    context-path:
+  connection-timeout: 10000d
+
+
+spring:
+  profiles:
+    active: dev
+  datasource:
+    # url: jdbc:mysql://localhost:3306/db_jz?characterEncoding=utf-8&useSSL=false
+
+    driver-class-name: com.mysql.jdbc.Driver
+    # 使用druid数据源
+    type: com.mysql.cj.jdbc.MysqlConnectionPoolDataSource
+    url: jdbc:mysql://localhost:3306/db_commpany_sys?characterEncoding=utf-8&useSSL=false
+    minIdle: 1000
+    maxActive: 100
+    initialSize: 100
+    timeBetweenEvictionRunsMillis: 3000
+    minEvictableIdleTimeMillis: 300000
+    username: root
+    password: 123
+
+  servlet:
+    multipart:
+      enabled: true
+      file-size-threshold: 0
+      location:
+      max-file-size: 1MB
+      max-request-size: 10MB
+      resolve-lazily: false
+  session:
+    store-type: none
+  mvc:
+    view:
+      prefix: /webapp
+
+
+
+
+mybatis:
+  mapperLocations: classpath:mapper/*.xml
+  typeAliasesPackage: com.lyj.etprotal.entity
+
+
+#pagehelper分页插件
+pageHelper:
+    helperDialect: mysql
+    reasonable: true
+    supportMethodsArguments: true
+    pageSizeZero: true
+    params: count=countSql
+
+#项目设置参数
+app :
+  connectionTimeout : 10000
+  version : 1.0
+  pageSize : 10
+  filePath : D:\imgs
+
+
+
